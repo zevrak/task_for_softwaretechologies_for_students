@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ZooTest {
 
@@ -22,6 +23,7 @@ class ZooTest {
         List<String> sounds = zoo.soundAllAnimalsSortByName();
         List<String> expected = Arrays.asList("moo", "woof", "meow", "meow");
         int i = 0;
+        assertNotEquals(0, sounds.size());
         for (String sound : sounds) {
             assertEquals(expected.get(i), sound);
             i++;
