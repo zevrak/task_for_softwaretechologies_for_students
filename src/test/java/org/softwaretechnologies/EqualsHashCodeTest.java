@@ -2,7 +2,6 @@ package org.softwaretechnologies;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -11,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SuppressWarnings("ALL")
-//@Disabled
 public class EqualsHashCodeTest {
     static class A {
         @Override
@@ -93,7 +91,7 @@ public class EqualsHashCodeTest {
         boolean c = EqualsVerifier.simple().forClass(C.class).report().isSuccessful();
         boolean d = EqualsVerifier.simple().forClass(D.class).report().isSuccessful();
         boolean e = EqualsVerifier.simple().forClass(E.class).report().isSuccessful();
-        assertTrue(e);
+
         /*
          * Какие классы содержат верную пару equals hashCode.
          * Невалидным может быть только один из методов.
@@ -102,5 +100,15 @@ public class EqualsHashCodeTest {
          * assertTrue(c);
          * assertFalse(a);
          */
+
+        // TODO: Встатьте нужные выражения assertTrue или assertFalse для переменных a b c d e чтобы тест проходил
+        // ↓↓↓↓ КОД ДЛЯ ЗАМЕНЫ ↓↓↓↓
+        assertTrue(e);
+        assertTrue(b);
+        assertTrue(c);
+        assertFalse(d);
+        assertFalse(e);
+        // ↑↑↑↑ КОД ДЛЯ ЗАМЕНЫ ↑↑↑↑
+
     }
 }
