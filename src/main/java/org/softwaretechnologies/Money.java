@@ -27,6 +27,11 @@ public class Money {
     @Override
     public boolean equals(Object o) {
         // TODO: реализуйте вышеуказанную функцию
+        if (o instanceof Money) {
+            Money money1 = (Money) o;
+        }
+
+        Money m = this;
 
         return false;
     }
