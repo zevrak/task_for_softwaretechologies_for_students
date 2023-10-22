@@ -11,7 +11,11 @@ public class ExceptionTask {
     public static void printMessage() {
         throwRuntimeException();
         // TODO: реализуйте вышеуказанную функцию
-
+try {
+    throwRuntimeException();
+}catch (Exception s ){
+    System.out.println("Вызвать функцию printMessage");
+}
     }
 
     /**
@@ -22,6 +26,11 @@ public class ExceptionTask {
     public static void printMessage2() throws Exception {
         throwCatchableException();
         // TODO: реализуйте вышеуказанную функцию
+        try {
+            throwRuntimeException();
+        }catch (Exception s ) {
+            System.out.println("Вызвать функцию printMessage2");
+        }
     }
 
     private static void throwCatchableException() throws Exception {
@@ -40,7 +49,9 @@ public class ExceptionTask {
      * @throws DivideOnNullException если divisor равен 0
      */
     public static int divide(int dividend, int divisor) throws DivideOnNullException {
-
+if (divisor==0){
+    throw new DivideOnNullException();
+}
         // TODO: реализуйте вышеуказанную функцию
         return dividend/divisor;
     }
@@ -56,8 +67,11 @@ public class ExceptionTask {
      */
     public static Optional<String> mergeStrings(String first, String second) {
         // TODO: реализуйте вышеуказанную функцию
-
-
+        if (first==null&&second==null) {
+            return Optional.empty();
+        }else if (first==null){
+            return Optional.of(second);
+        }else if (second==null){return  Optional.of(first);}
 
         return Optional.of(first.length() > second.length() ? first + second : second + first);
     }
