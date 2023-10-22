@@ -3,10 +3,7 @@ package org.softwaretechnologies;
 import org.softwaretechnologies.animals.Animal;
 import org.softwaretechnologies.animals.AnimalType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Zoo {
     private final List<Animal> animalList = new ArrayList<>();
@@ -35,7 +32,14 @@ public class Zoo {
     public List<String> soundAllAnimalsSortByName() {
         List<String> sounds = new ArrayList<>();
         // TODO заполните корректно список звуков
-
+        Comparator<Animal> comparator=new Comparator<Animal>() {
+            @Override
+            public int compare(Animal o1, Animal o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+        Collections.sort(animalList,comparator);
+        for(Animal x:animalList)sounds.add(x.sound());
         return sounds;
     }
 
