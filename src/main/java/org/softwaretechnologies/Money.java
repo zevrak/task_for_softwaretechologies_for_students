@@ -27,14 +27,24 @@ public class Money {
     @Override
     public boolean equals(Object o) {
         // TODO: реализуйте вышеуказанную функцию
-        if (o instanceof Money) {
-            Money money1 = (Money) o;
-        }
+        if(o==this)
+            return true;
+        if (!(o instanceof Money money))
+            return false;
+        if (((Money) o).amount == null || amount == null )
+            if(((Money) o).amount == null && amount == null)
+                return type == ((Money) o).type;
+            else return false;
 
-        Money m = this;
+        if (((Money) o).type == null || type == null)
+            if (((Money) o).type == null && type == null)
+                return amount.setScale(4, RoundingMode.HALF_UP).compareTo(((Money) o).amount.setScale(4, RoundingMode.HALF_UP)) == 0;
+            else return false;
 
-        return false;
+        return type == ((Money) o).type && amount.setScale(4, RoundingMode.HALF_UP).compareTo(((Money) o).amount.setScale(4, RoundingMode.HALF_UP)) == 0;
     }
+
+
 
     /**
      * Формула:
@@ -54,10 +64,16 @@ public class Money {
     @Override
     public int hashCode() {
         // TODO: реализуйте вышеуказанную функцию
-
-
-        Random random = new Random();
-        return random.nextInt();
+        if(amount==null)return 10000;
+        int ra;
+        ra=amount.setScale(4, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(10000)).intValue();
+        if(ra>MAX_VALUE-5)ra=MAX_VALUE;
+        if (type==null){
+            ra+=5;
+            return ra;
+        }
+        ra+=type.ordinal()+1;
+        return ra;
     }
 
     /**
