@@ -78,13 +78,13 @@ public final class Elevator {
             return;
         }
                 while (currentFloor != floor) {
-
+                    System.out.println("Текущий этаж: " + currentFloor);
                     if (currentFloor > floor) {
                         goDown();
                     } else if (currentFloor < floor) {
                         goUp();
                     }
-                    System.out.println("Текущий этаж: " + currentFloor);
+
                 }
                 System.out.println("Вы достигли указанного этажа: " + currentFloor);
 
